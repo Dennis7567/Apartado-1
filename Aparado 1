@@ -1,25 +1,23 @@
-Claro, aquí tienes una implementación básica de la clase Sample en Python con los atributos especificados. El atributo species está encapsulado mediante un atributo privado y métodos getter y setter:
-
 class Sample:
     def __init__(self, sepal_length, sepal_width, petal_length, petal_width, species):
         self.sepal_length = float(sepal_length)
         self.sepal_width = float(sepal_width)
         self.petal_length = float(petal_length)
         self.petal_width = float(petal_width)
-        self.__species = species  # Encapsulado
+        self.__species = species  # Atributo encapsulado
 
     # Getter para species
-    def get_species(self):
+    @property
+    def species(self):
         return self.__species
 
     # Setter para species
-    def set_species(self, species):
-        self.__species = species
+    @species.setter
+    def species(self, value):
+        self.__species = value
 
-    # Opcional: representación como string
+    # Método para representar el objeto como string
     def __str__(self):
-        return f"Sample(sepal_length={self.sepal_length}, sepal_width={self.sepal_width}, " \
-               f"petal_length={self.petal_length}, petal_width={self.petal_width}, species={self.__species})"
-
-¿Quieres que también se puedan comparar o convertir en diccionario, o que se validen los valores de entrada? Puedo ampliar la clase según lo necesites.
-
+        return (f"Sample(sepal_length={self.sepal_length}, sepal_width={self.sepal_width}, "
+                f"petal_length={self.petal_length}, petal_width={self.petal_width}, "
+                f"species='{self.__species}')")
